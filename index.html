@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/img/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qibla Time - Privacy Policy</title>
     <style>
@@ -36,24 +35,17 @@
         h3 {
             color: #2c3e50;
         }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
         .last-updated {
             font-style: italic;
             color: #7f8c8d;
             text-align: right;
             margin-top: -15px;
         }
-        .contact-box {
-            background-color: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
+        .note {
+            background-color: #fff8e1;
+            padding: 10px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
         }
         table {
             width: 100%;
@@ -68,170 +60,126 @@
         th {
             background-color: #f2f2f2;
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .note {
-            background-color: #fff8e1;
-            padding: 10px;
-            border-left: 4px solid #ffc107;
-            margin: 15px 0;
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>Qibla Time Privacy Policy</h1>
-        <p>Your privacy is important to us</p>
+        <p>Effective Date: July 16, 2025</p>
     </header>
 
-    <div class="last-updated">Last Updated: June 26, 2024</div>
+    <div class="last-updated">Last Updated: July 16, 2025</div>
 
     <section>
-        <h2>1. Information We Collect</h2>
+        <h2>1. Information Collection and Use</h2>
         
-        <h3>A. Location Data</h3>
-        <p>We collect your location data <strong>only when you use the app</strong> to:</p>
+        <h3>Location Data</h3>
+        <p>The app collects your precise location (GPS) to:</p>
         <ul>
-            <li>Calculate accurate prayer times based on your current position</li>
-            <li>Determine the correct Qibla direction</li>
-        </ul>
-        <p><strong>Important:</strong> Your location data is processed locally on your device and never transmitted to our servers or shared with third parties.</p>
-        
-        <h3>B. Device Sensors</h3>
-        <p>The app requires these sensors to function:</p>
-        <ul>
-            <li><strong>Accelerometer</strong> - For device orientation</li>
-            <li><strong>Magnetometer (compass)</strong> - For Qibla direction</li>
+            <li>Calculate accurate Qibla direction</li>
+            <li>Determine prayer times for your location</li>
+            <li>Show distance to Kaaba</li>
         </ul>
         <div class="note">
-            <strong>Note:</strong> Devices without these sensors cannot install the app from Google Play.
+            <strong>Important:</strong> Location data is processed locally and never stored on our servers.
         </div>
         
-        <h3>C. Notification Preferences</h3>
-        <p>Your prayer notification settings are stored locally on your device.</p>
+        <h3>Device Sensors</h3>
+        <p>The app requires:</p>
+        <ul>
+            <li><strong>Accelerometer</strong> - For compass functionality</li>
+            <li><strong>Magnetometer</strong> - For Qibla direction calculation</li>
+        </ul>
     </section>
 
     <section>
-        <h2>2. System Permissions</h2>
-        
+        <h2>2. Permissions</h2>
         <table>
             <tr>
                 <th>Permission</th>
-                <th>Purpose</th>
-                <th>Required</th>
+                <th>Usage</th>
             </tr>
             <tr>
-                <td><code>ACCESS_FINE_LOCATION</code></td>
-                <td>Precise Qibla direction & prayer times</td>
-                <td>✅ Required</td>
+                <td>ACCESS_FINE_LOCATION</td>
+                <td>For precise Qibla direction and prayer times</td>
             </tr>
             <tr>
-                <td><code>ACCESS_COARSE_LOCATION</code></td>
-                <td>Fallback when GPS unavailable</td>
-                <td>✅ Required</td>
+                <td>ACCESS_COARSE_LOCATION</td>
+                <td>Fallback when precise location unavailable</td>
             </tr>
             <tr>
-                <td><code>INTERNET</code></td>
-                <td>Fetch prayer times from Aladhan API</td>
-                <td>✅ Required</td>
-            </tr>
-            <tr>
-                <td><code>ACCESS_NETWORK_STATE</code></td>
-                <td>Check internet connectivity</td>
-                <td>✅ Required</td>
-            </tr>
-            <tr>
-                <td><code>VIBRATE</code></td>
+                <td>VIBRATE</td>
                 <td>Haptic feedback when facing Qibla</td>
-                <td>Optional</td>
             </tr>
             <tr>
-                <td><code>FOREGROUND_SERVICE</code></td>
-                <td>Reliable prayer time notifications</td>
-                <td>✅ Required</td>
+                <td>INTERNET</td>
+                <td>Fetch prayer times from Aladhan API</td>
             </tr>
             <tr>
-                <td><code>WAKE_LOCK</code></td>
+                <td>ACCESS_NETWORK_STATE</td>
+                <td>Check internet connectivity</td>
+            </tr>
+            <tr>
+                <td>WAKE_LOCK</td>
                 <td>Keep screen on during Qibla use</td>
-                <td>Optional</td>
             </tr>
             <tr>
-                <td><code>POST_NOTIFICATIONS</code></td>
-                <td>Show prayer alerts (Android 13+)</td>
-                <td>✅ Required</td>
+                <td>POST_NOTIFICATIONS</td>
+                <td>Show prayer time notifications</td>
             </tr>
             <tr>
-                <td><code>RECEIVE_BOOT_COMPLETED</code></td>
-                <td>Restart alarms after reboot</td>
-                <td>✅ Required</td>
-            </tr>
-            <tr>
-                <td><code>SCHEDULE_EXACT_ALARM</code></td>
-                <td>Precise prayer time notifications</td>
-                <td>✅ Required</td>
+                <td>RECEIVE_BOOT_COMPLETED</td>
+                <td>Restart prayer alarms after device reboot</td>
             </tr>
         </table>
     </section>
 
     <section>
-        <h2>3. Third-Party Services</h2>
-        
-        <h3>A. Prayer Time Data</h3>
-        <p>We use the <a href="https://aladhan.com" target="_blank">Aladhan API</a> to fetch prayer times. Your location coordinates are sent to this service <strong>only to get prayer times for your location</strong>.</p>
-        
-        <h3>B. Advertising</h3>
-       <p>The app uses Google AdMob for advertising. AdMob may collect anonymous data according to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+        <h2>3. Data Sharing</h2>
+        <p>We share limited information with:</p>
+        <ul>
+            <li><strong>Aladhan API</strong> - Only your coordinates to fetch prayer times</li>
+            <li><strong>Google AdMob</strong> - For serving ads</li>
+        </ul>
+        <div class="note">
+            <strong>No personal data</strong> is collected or shared with third parties.
+        </div>
     </section>
 
     <section>
-        <h2>4. Data Security & Retention</h2>
+        <h2>4. Data Retention</h2>
+        <p>All data is processed locally on your device:</p>
         <ul>
-            <li><strong>All processing is local</strong> - No data leaves your device</li>
-            <li><strong>No user accounts</strong> - We don't collect personal information</li>
-            <li><strong>Location data</strong> - Used temporarily and discarded</li>
-            <li><strong>Notification settings</strong> - Stored only on your device</li>
+            <li>Location data - Used temporarily and not stored</li>
+            <li>Prayer times - Cached locally for offline use</li>
+            <li>Notification preferences - Stored on device</li>
         </ul>
     </section>
 
     <section>
         <h2>5. User Controls</h2>
-        
-        <h3>Notification Management</h3>
-        <p>Control notifications per prayer:</p>
-        <ol>
-            <li>Open Qibla Time</li>
-            <li>Toggle buttons (🌙/🔔) next to each prayer time</li>
-        </ol>
-        
-        <h3>Permissions</h3>
-        <p>Adjust anytime via:</p>
-        <ol>
-            <li>Device Settings → Apps → Qibla Time → Permissions</li>
-        </ol>
-        
-        <h3>Data Deletion</h3>
-        <p>Remove all app data:</p>
-        <ol>
-            <li>Settings → Apps → Qibla Time → Storage → Clear Data</li>
-        </ol>
-    </section>
-
-    <section>
-        <h2>6. Policy Updates</h2>
-        <p>We may update this policy. When we do:</p>
+        <p>You can:</p>
         <ul>
-            <li>Update the "June 26, 2024"</li>
-            <li>Describe significant changes</li>
+            <li>Disable location services in app settings</li>
+            <li>Turn off individual prayer notifications</li>
+            <li>Revoke permissions via device settings</li>
+            <li>Clear all app data by uninstalling</li>
         </ul>
     </section>
 
     <section>
-        <h2>7. Contact Us</h2>
-        <div class="contact-box">
-            <p>For privacy questions:</p>
-            <p>📧 <a href="mailto:mdnaeemm401@gmail.com">mdnaeemm401@gmail.com</a></p>
-        </div>
+        <h2>6. Children's Privacy</h2>
+        <p>Our app does not knowingly collect personal information from children under 13.</p>
+    </section>
+
+    <section>
+        <h2>7. Changes to This Policy</h2>
+        <p>We may update this policy and will notify users of significant changes.</p>
+    </section>
+
+    <section>
+        <h2>8. Contact Us</h2>
+        <p>For questions about this policy: <strong>mdnaeemm401@gmail.com</strong></p>
     </section>
 </body>
 </html>
