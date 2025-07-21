@@ -79,16 +79,25 @@
             <li>Calculate accurate Qibla direction</li>
             <li>Determine prayer times for your location</li>
             <li>Show distance to Kaaba</li>
+            <li>Provide city name for display purposes</li>
         </ul>
         <div class="note">
-            <strong>Important:</strong> Location data is processed locally and never stored on our servers.
+            <strong>Important:</strong> Location data is processed locally using Huawei Location Services and never stored on our servers.
         </div>
         
         <h3>Device Sensors</h3>
         <p>The app requires:</p>
         <ul>
-            <li><strong>Accelerometer</strong> - For compass functionality</li>
-            <li><strong>Magnetometer</strong> - For Qibla direction calculation</li>
+            <li><strong>Accelerometer</strong> - For compass functionality (required feature)</li>
+            <li><strong>Magnetometer</strong> - For Qibla direction calculation (required feature)</li>
+        </ul>
+
+        <h3>Prayer Time Data</h3>
+        <p>We cache prayer times locally for:</p>
+        <ul>
+            <li>Offline functionality</li>
+            <li>Notification scheduling</li>
+            <li>Countdown calculations</li>
         </ul>
     </section>
 
@@ -98,38 +107,67 @@
             <tr>
                 <th>Permission</th>
                 <th>Usage</th>
+                <th>Required</th>
             </tr>
             <tr>
                 <td>ACCESS_FINE_LOCATION</td>
                 <td>For precise Qibla direction and prayer times</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>ACCESS_COARSE_LOCATION</td>
                 <td>Fallback when precise location unavailable</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>VIBRATE</td>
-                <td>Haptic feedback when facing Qibla</td>
+                <td>Haptic feedback when facing Qibla and for notifications</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>INTERNET</td>
-                <td>Fetch prayer times from Aladhan API</td>
+                <td>Fetch prayer times from Aladhan API and for Huawei Ads</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>ACCESS_NETWORK_STATE</td>
                 <td>Check internet connectivity</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>WAKE_LOCK</td>
-                <td>Keep screen on during Qibla use</td>
+                <td>Keep device awake during Qibla use and Azan playback</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>POST_NOTIFICATIONS</td>
                 <td>Show prayer time notifications</td>
+                <td>Yes</td>
             </tr>
             <tr>
                 <td>RECEIVE_BOOT_COMPLETED</td>
                 <td>Restart prayer alarms after device reboot</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>FOREGROUND_SERVICE</td>
+                <td>For Azan playback service</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>SCHEDULE_EXACT_ALARM</td>
+                <td>For precise prayer time notifications</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>FOREGROUND_SERVICE_MEDIA_PLAYBACK</td>
+                <td>For Azan audio playback in foreground service</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>com.huawei.android.launcher.permission.CHANGE_BADGE</td>
+                <td>For badge notifications on Huawei devices</td>
+                <td>Huawei only</td>
             </tr>
         </table>
     </section>
@@ -138,48 +176,119 @@
         <h2>3. Data Sharing</h2>
         <p>We share limited information with:</p>
         <ul>
-            <li><strong>Aladhan API</strong> - Only your coordinates to fetch prayer times</li>
-            <li><strong>Google AdMob</strong> - For serving ads</li>
+            <li><strong>Aladhan API</strong> - Only your coordinates to fetch prayer times (no personal identifiers)</li>
+            <li><strong>Huawei Mobile Services</strong>:
+                <ul>
+                    <li>Huawei Ads SDK</li>
+                    <li>Huawei Push Kit for notifications</li>
+                    <li>Huawei Location Services</li>
+                </ul>
+            </li>
         </ul>
         <div class="note">
-            <strong>No personal data</strong> is collected or shared with third parties.
+            <strong>No personal data</strong> is collected or shared with third parties beyond what's necessary for app functionality.
         </div>
+
+        <h3>Huawei Services Data Collection</h3>
+        <p>When using Huawei services, the following data may be collected by Huawei:</p>
+        <ul>
+            <li>Advertising ID for personalized ads (can be reset in device settings)</li>
+            <li>Device information for Push Kit delivery</li>
+            <li>Approximate location for ad targeting</li>
+        </ul>
+        <p>Refer to <a href="https://consumer.huawei.com/en/privacy/privacy-policy/" target="_blank">Huawei's Privacy Policy</a> for details.</p>
     </section>
 
     <section>
         <h2>4. Data Retention</h2>
-        <p>All data is processed locally on your device:</p>
+        <p>All data is processed with these principles:</p>
         <ul>
-            <li>Location data - Used temporarily and not stored</li>
-            <li>Prayer times - Cached locally for offline use</li>
-            <li>Notification preferences - Stored on device</li>
+            <li><strong>Location data</strong> - Used temporarily and not stored beyond current session</li>
+            <li><strong>Prayer times</strong> - Cached locally for offline use (cleared on app uninstall)</li>
+            <li><strong>Notification preferences</strong> - Stored on device per madhhab (4 schools of thought)</li>
+            <li><strong>Last known location</strong> - Stored locally to restore state between sessions</li>
+            <li><strong>First run flag</strong> - Stored to set default Maliki settings once</li>
         </ul>
     </section>
 
     <section>
         <h2>5. User Controls</h2>
-        <p>You can:</p>
+        <p>You have full control over:</p>
         <ul>
-            <li>Disable location services in app settings</li>
-            <li>Turn off individual prayer notifications</li>
-            <li>Revoke permissions via device settings</li>
-            <li>Clear all app data by uninstalling</li>
+            <li><strong>Location Services</strong> - Disable in app or device settings</li>
+            <li><strong>Prayer Notifications</strong> - Toggle individually for each prayer time</li>
+            <li><strong>Madhhab Selection</strong> - Choose between 4 Islamic schools of thought</li>
+            <li><strong>Huawei Ads</strong> - Reset advertising ID in device settings</li>
+            <li><strong>All Data</strong> - Clear everything by uninstalling the app</li>
+        </ul>
+
+        <h3>Notification Controls</h3>
+        <p>For each prayer (Fajr, Dhuhr, Asr, Maghrib, Isha) you can:</p>
+        <ul>
+            <li>Enable/disable notifications per madhhab</li>
+            <li>Customize vibration patterns</li>
+            <li>Control azan sound playback</li>
         </ul>
     </section>
 
     <section>
-        <h2>6. Children's Privacy</h2>
+        <h2>6. Security Measures</h2>
+        <p>We implement:</p>
+        <ul>
+            <li>HTTPS encryption for all API communications</li>
+            <li>Local storage encryption for sensitive preferences</li>
+            <li>Regular security updates for dependencies</li>
+            <li>Huawei's secure SDKs for all HMS integrations</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>7. Children's Privacy</h2>
         <p>Our app does not knowingly collect personal information from children under 13.</p>
+        <div class="note">
+            <strong>Parental Note:</strong> The app contains religious content appropriate for all ages, but we recommend parental guidance for children using location services.
+        </div>
     </section>
 
     <section>
-        <h2>7. Changes to This Policy</h2>
-        <p>We may update this policy and will notify users of significant changes.</p>
+        <h2>8. International Data Transfers</h2>
+        <p>When using Huawei services, data may be transferred to and processed in:</p>
+        <ul>
+            <li>China (Huawei servers)</li>
+            <li>Singapore (Huawei cloud region)</li>
+        </ul>
+        <p>These transfers are covered by Huawei's data protection agreements.</p>
     </section>
 
     <section>
-        <h2>8. Contact Us</h2>
-        <p>For questions about this policy: <strong>mdnaeemm401@gmail.com</strong></p>
+        <h2>9. Changes to This Policy</h2>
+        <p>We may update this policy and will:</p>
+        <ul>
+            <li>Notify users via in-app notification for significant changes</li>
+            <li>Update the "Last Updated" date prominently</li>
+            <li>Archive previous versions upon request</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>10. Contact Us</h2>
+        <p>For questions about this policy or data practices:</p>
+        <p><strong>Email:</strong> mdnaeemm401@gmail.com</p>
+        <p><strong>Developer:</strong> Naeem D. V.</p>
+        <p>We typically respond within 3 business days.</p>
+    </section>
+
+    <section>
+        <h2>11. Compliance Information</h2>
+        <p>This app complies with:</p>
+        <ul>
+            <li>Huawei AppGallery privacy requirements</li>
+            <li>General Data Protection Regulation (GDPR) principles</li>
+            <li>California Consumer Privacy Act (CCPA) guidelines</li>
+        </ul>
+        <div class="note">
+            <strong>Note for EU Users:</strong> You may request deletion of cached data by uninstalling the app.
+        </div>
     </section>
 </body>
 </html>
