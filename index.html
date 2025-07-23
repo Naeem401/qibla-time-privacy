@@ -65,10 +65,10 @@
 <body>
     <header>
         <h1>Qibla Time Privacy Policy</h1>
-        <p>Effective Date: July 16, 2025</p>
+        <p>Effective Date: July 23, 2025</p>
     </header>
 
-    <div class="last-updated">Last Updated: July 16, 2025</div>
+    <div class="last-updated">Last Updated: July 23, 2025</div>
 
     <section>
         <h2>1. Information Collection and Use</h2>
@@ -88,9 +88,10 @@
         <h3>Device Sensors</h3>
         <p>The app requires:</p>
         <ul>
-            <li><strong>Accelerometer</strong> - For compass functionality (required feature)</li>
-            <li><strong>Magnetometer</strong> - For Qibla direction calculation (required feature)</li>
+            <li><strong>Accelerometer</strong> - For compass functionality</li>
+            <li><strong>Magnetometer</strong> - For Qibla direction calculation</li>
         </ul>
+        <p>Sensor data is processed in real-time and never stored.</p>
 
         <h3>Prayer Time Data</h3>
         <p>We cache prayer times locally for:</p>
@@ -98,6 +99,14 @@
             <li>Offline functionality</li>
             <li>Notification scheduling</li>
             <li>Countdown calculations</li>
+        </ul>
+        
+        <h3>Ad Integration</h3>
+        <p>The app uses Start.io (formerly StartApp) for ads which may collect:</p>
+        <ul>
+            <li>Advertising ID for ad personalization</li>
+            <li>Approximate location for regional ads</li>
+            <li>Device type for ad optimization</li>
         </ul>
     </section>
 
@@ -126,7 +135,7 @@
             </tr>
             <tr>
                 <td>INTERNET</td>
-                <td>Fetch prayer times from Aladhan API and for Huawei Ads</td>
+                <td>Fetch prayer times from Aladhan API and for ads</td>
                 <td>Yes</td>
             </tr>
             <tr>
@@ -177,11 +186,11 @@
         <p>We share limited information with:</p>
         <ul>
             <li><strong>Aladhan API</strong> - Only your coordinates to fetch prayer times (no personal identifiers)</li>
+            <li><strong>Start.io</strong> - For ad serving and analytics</li>
             <li><strong>Huawei Mobile Services</strong>:
                 <ul>
-                    <li>Huawei Ads SDK</li>
-                    <li>Huawei Push Kit for notifications</li>
                     <li>Huawei Location Services</li>
+                    <li>Huawei Push Kit for notifications</li>
                 </ul>
             </li>
         </ul>
@@ -189,14 +198,17 @@
             <strong>No personal data</strong> is collected or shared with third parties beyond what's necessary for app functionality.
         </div>
 
-        <h3>Huawei Services Data Collection</h3>
-        <p>When using Huawei services, the following data may be collected by Huawei:</p>
+        <h3>Third-Party Data Collection</h3>
+        <p>When using integrated services, the following data may be collected:</p>
         <ul>
-            <li>Advertising ID for personalized ads (can be reset in device settings)</li>
-            <li>Device information for Push Kit delivery</li>
-            <li>Approximate location for ad targeting</li>
+            <li><strong>Start.io</strong>: Advertising ID, device information, approximate location</li>
+            <li><strong>Huawei Services</strong>: Device information for service delivery</li>
         </ul>
-        <p>Refer to <a href="https://consumer.huawei.com/en/privacy/privacy-policy/" target="_blank">Huawei's Privacy Policy</a> for details.</p>
+        <p>Refer to their respective privacy policies for details:</p>
+        <ul>
+            <li><a href="https://www.start.io/policy/privacy-policy/" target="_blank">Start.io Privacy Policy</a></li>
+            <li><a href="https://consumer.huawei.com/en/privacy/privacy-policy/" target="_blank">Huawei Privacy Policy</a></li>
+        </ul>
     </section>
 
     <section>
@@ -208,6 +220,7 @@
             <li><strong>Notification preferences</strong> - Stored on device per madhhab (4 schools of thought)</li>
             <li><strong>Last known location</strong> - Stored locally to restore state between sessions</li>
             <li><strong>First run flag</strong> - Stored to set default Maliki settings once</li>
+            <li><strong>Ad identifiers</strong> - Managed by Start.io SDK according to their policies</li>
         </ul>
     </section>
 
@@ -218,7 +231,7 @@
             <li><strong>Location Services</strong> - Disable in app or device settings</li>
             <li><strong>Prayer Notifications</strong> - Toggle individually for each prayer time</li>
             <li><strong>Madhhab Selection</strong> - Choose between 4 Islamic schools of thought</li>
-            <li><strong>Huawei Ads</strong> - Reset advertising ID in device settings</li>
+            <li><strong>Ads Personalization</strong> - Opt-out in device settings</li>
             <li><strong>All Data</strong> - Clear everything by uninstalling the app</li>
         </ul>
 
@@ -226,8 +239,8 @@
         <p>For each prayer (Fajr, Dhuhr, Asr, Maghrib, Isha) you can:</p>
         <ul>
             <li>Enable/disable notifications per madhhab</li>
-            <li>Customize vibration patterns</li>
-            <li>Control azan sound playback</li>
+            <li>Control vibration patterns</li>
+            <li>Manage azan sound playback</li>
         </ul>
     </section>
 
@@ -239,6 +252,7 @@
             <li>Local storage encryption for sensitive preferences</li>
             <li>Regular security updates for dependencies</li>
             <li>Huawei's secure SDKs for all HMS integrations</li>
+            <li>WorkManager for secure background processing</li>
         </ul>
     </section>
 
@@ -246,18 +260,19 @@
         <h2>7. Children's Privacy</h2>
         <p>Our app does not knowingly collect personal information from children under 13.</p>
         <div class="note">
-            <strong>Parental Note:</strong> The app contains religious content appropriate for all ages, but we recommend parental guidance for children using location services.
+            <strong>Parental Note:</strong> The app contains religious content appropriate for all ages, but we recommend parental guidance for children using location services or ad-supported features.
         </div>
     </section>
 
     <section>
         <h2>8. International Data Transfers</h2>
-        <p>When using Huawei services, data may be transferred to and processed in:</p>
+        <p>When using integrated services, data may be transferred to:</p>
         <ul>
+            <li>United States (Start.io servers)</li>
             <li>China (Huawei servers)</li>
             <li>Singapore (Huawei cloud region)</li>
         </ul>
-        <p>These transfers are covered by Huawei's data protection agreements.</p>
+        <p>These transfers are covered by the respective service providers' data protection agreements.</p>
     </section>
 
     <section>
@@ -266,7 +281,7 @@
         <ul>
             <li>Notify users via in-app notification for significant changes</li>
             <li>Update the "Last Updated" date prominently</li>
-            <li>Archive previous versions upon request</li>
+            <li>Provide version history upon request</li>
         </ul>
     </section>
 
@@ -282,12 +297,13 @@
         <h2>11. Compliance Information</h2>
         <p>This app complies with:</p>
         <ul>
-            <li>Huawei AppGallery privacy requirements</li>
+            <li>Google Play Store and Huawei AppGallery requirements</li>
             <li>General Data Protection Regulation (GDPR) principles</li>
             <li>California Consumer Privacy Act (CCPA) guidelines</li>
+            <li>Children's Online Privacy Protection Act (COPPA)</li>
         </ul>
         <div class="note">
-            <strong>Note for EU Users:</strong> You may request deletion of cached data by uninstalling the app.
+            <strong>Note for EU Users:</strong> You may request deletion of cached data by uninstalling the app or contacting us directly.
         </div>
     </section>
 </body>
