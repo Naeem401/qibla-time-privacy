@@ -60,49 +60,56 @@
         th {
             background-color: #f2f2f2;
         }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Qibla Time Privacy Policy</h1>
-        <p>Effective Date: July 23, 2025</p>
+        <p>Effective Date: July 26, 2025</p>
     </header>
 
-    <div class="last-updated">Last Updated: July 23, 2025</div>
+    <div class="last-updated">Last Updated: July 26, 2025</div>
 
     <section>
         <h2>1. Information Collection and Use</h2>
         
         <h3>Location Data</h3>
-        <p>The app collects your precise location (GPS) to:</p>
+        <p>The app collects your precise location (GPS) through both Huawei Location Services and Android Location Services to:</p>
         <ul>
-            <li>Calculate accurate Qibla direction</li>
-            <li>Determine prayer times for your location</li>
+            <li>Calculate accurate Qibla direction (implemented in QiblaFragment.java)</li>
+            <li>Determine prayer times for your location (PrayerTimeFragment.java)</li>
             <li>Show distance to Kaaba</li>
-            <li>Provide city name for display purposes</li>
+            <li>Provide city name for display purposes (using Geocoder)</li>
         </ul>
         <div class="note">
-            <strong>Important:</strong> Location data is processed locally using Huawei Location Services and never stored on our servers.
+            <strong>Important:</strong> Location data is processed locally and never stored on our servers. Last known location is cached in SharedPreferences for better user experience.
         </div>
         
         <h3>Device Sensors</h3>
-        <p>The app requires:</p>
+        <p>The app requires (as declared in AndroidManifest.xml):</p>
         <ul>
-            <li><strong>Accelerometer</strong> - For compass functionality</li>
+            <li><strong>Accelerometer</strong> - For compass functionality in QiblaFragment</li>
             <li><strong>Magnetometer</strong> - For Qibla direction calculation</li>
         </ul>
-        <p>Sensor data is processed in real-time and never stored.</p>
+        <p>Sensor data is processed in real-time through SensorManager and never stored.</p>
 
         <h3>Prayer Time Data</h3>
-        <p>We cache prayer times locally for:</p>
+        <p>We cache prayer times locally in SharedPreferences for:</p>
         <ul>
             <li>Offline functionality</li>
-            <li>Notification scheduling</li>
-            <li>Countdown calculations</li>
+            <li>Notification scheduling (using WorkManager)</li>
+            <li>Countdown calculations (CountDownTimer implementation)</li>
         </ul>
         
         <h3>Ad Integration</h3>
-        <p>The app uses Start.io (formerly StartApp) for ads which may collect:</p>
+        <p>The app uses Start.io (as implemented in MainActivity.java) for ads which may collect:</p>
         <ul>
             <li>Advertising ID for ad personalization</li>
             <li>Approximate location for regional ads</li>
@@ -120,7 +127,7 @@
             </tr>
             <tr>
                 <td>ACCESS_FINE_LOCATION</td>
-                <td>For precise Qibla direction and prayer times</td>
+                <td>For precise Qibla direction and prayer times (MainActivity location updates)</td>
                 <td>Yes</td>
             </tr>
             <tr>
@@ -130,52 +137,52 @@
             </tr>
             <tr>
                 <td>VIBRATE</td>
-                <td>Haptic feedback when facing Qibla and for notifications</td>
+                <td>Haptic feedback when facing Qibla and for notifications (Vibrator service)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>INTERNET</td>
-                <td>Fetch prayer times from Aladhan API and for ads</td>
+                <td>Fetch prayer times from Aladhan API and for ads (Volley implementation)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>ACCESS_NETWORK_STATE</td>
-                <td>Check internet connectivity</td>
+                <td>Check internet connectivity before API calls</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>WAKE_LOCK</td>
-                <td>Keep device awake during Qibla use and Azan playback</td>
+                <td>Keep device awake during Qibla use and Azan playback (PowerManager)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>POST_NOTIFICATIONS</td>
-                <td>Show prayer time notifications</td>
+                <td>Show prayer time notifications (NotificationManager)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>RECEIVE_BOOT_COMPLETED</td>
-                <td>Restart prayer alarms after device reboot</td>
+                <td>Restart prayer alarms after device reboot (BroadcastReceiver)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>FOREGROUND_SERVICE</td>
-                <td>For Azan playback service</td>
+                <td>For Azan playback service (AzanService implementation)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>SCHEDULE_EXACT_ALARM</td>
-                <td>For precise prayer time notifications</td>
+                <td>For precise prayer time notifications (AlarmManager)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>FOREGROUND_SERVICE_MEDIA_PLAYBACK</td>
-                <td>For Azan audio playback in foreground service</td>
+                <td>For Azan audio playback in foreground service (MediaPlayer)</td>
                 <td>Yes</td>
             </tr>
             <tr>
                 <td>com.huawei.android.launcher.permission.CHANGE_BADGE</td>
-                <td>For badge notifications on Huawei devices</td>
+                <td>For badge notifications on Huawei devices (HMS integration)</td>
                 <td>Huawei only</td>
             </tr>
         </table>
@@ -186,11 +193,11 @@
         <p>We share limited information with:</p>
         <ul>
             <li><strong>Aladhan API</strong> - Only your coordinates to fetch prayer times (no personal identifiers)</li>
-            <li><strong>Start.io</strong> - For ad serving and analytics</li>
+            <li><strong>Start.io</strong> - For ad serving and analytics (as configured in MainActivity)</li>
             <li><strong>Huawei Mobile Services</strong>:
                 <ul>
-                    <li>Huawei Location Services</li>
-                    <li>Huawei Push Kit for notifications</li>
+                    <li>Huawei Location Services (FusedLocationProviderClient)</li>
+                    <li>App ID: 114774423 (from manifest meta-data)</li>
                 </ul>
             </li>
         </ul>
@@ -208,6 +215,7 @@
         <ul>
             <li><a href="https://www.start.io/policy/privacy-policy/" target="_blank">Start.io Privacy Policy</a></li>
             <li><a href="https://consumer.huawei.com/en/privacy/privacy-policy/" target="_blank">Huawei Privacy Policy</a></li>
+            <li><a href="https://aladhan.com/privacy" target="_blank">Aladhan API Privacy Policy</a></li>
         </ul>
     </section>
 
@@ -215,22 +223,21 @@
         <h2>4. Data Retention</h2>
         <p>All data is processed with these principles:</p>
         <ul>
-            <li><strong>Location data</strong> - Used temporarily and not stored beyond current session</li>
-            <li><strong>Prayer times</strong> - Cached locally for offline use (cleared on app uninstall)</li>
-            <li><strong>Notification preferences</strong> - Stored on device per madhhab (4 schools of thought)</li>
-            <li><strong>Last known location</strong> - Stored locally to restore state between sessions</li>
-            <li><strong>First run flag</strong> - Stored to set default Maliki settings once</li>
+            <li><strong>Location data</strong> - Used temporarily and not stored beyond current session (except last known location in SharedPreferences)</li>
+            <li><strong>Prayer times</strong> - Cached locally in SharedPreferences for offline use (cleared on app uninstall)</li>
+            <li><strong>Notification preferences</strong> - Stored on device per madhhab (4 schools of thought implementation)</li>
+            <li><strong>First run flag</strong> - Stored to set default Maliki settings once (initial setup in PrayerTimeFragment)</li>
             <li><strong>Ad identifiers</strong> - Managed by Start.io SDK according to their policies</li>
         </ul>
     </section>
 
     <section>
         <h2>5. User Controls</h2>
-        <p>You have full control over:</p>
+        <p>You have full control over (as implemented in PrayerTimeFragment.java):</p>
         <ul>
-            <li><strong>Location Services</strong> - Disable in app or device settings</li>
-            <li><strong>Prayer Notifications</strong> - Toggle individually for each prayer time</li>
-            <li><strong>Madhhab Selection</strong> - Choose between 4 Islamic schools of thought</li>
+            <li><strong>Location Services</strong> - Disable in app or device settings (MainActivity checks)</li>
+            <li><strong>Prayer Notifications</strong> - Toggle individually for each prayer time (ToggleButton implementation)</li>
+            <li><strong>Madhhab Selection</strong> - Choose between 4 Islamic schools (TabLayout implementation)</li>
             <li><strong>Ads Personalization</strong> - Opt-out in device settings</li>
             <li><strong>All Data</strong> - Clear everything by uninstalling the app</li>
         </ul>
@@ -238,21 +245,23 @@
         <h3>Notification Controls</h3>
         <p>For each prayer (Fajr, Dhuhr, Asr, Maghrib, Isha) you can:</p>
         <ul>
-            <li>Enable/disable notifications per madhhab</li>
-            <li>Control vibration patterns</li>
-            <li>Manage azan sound playback</li>
+            <li>Enable/disable notifications per madhhab (stored in SharedPreferences)</li>
+            <li>Control vibration patterns (Vibrator service)</li>
+            <li>Manage azan sound playback (MediaPlayer implementation)</li>
+            <li>Stop ongoing azan (StopAzanReceiver implementation)</li>
         </ul>
     </section>
 
     <section>
         <h2>6. Security Measures</h2>
-        <p>We implement:</p>
+        <p>We implement (as seen in your code):</p>
         <ul>
-            <li>HTTPS encryption for all API communications</li>
-            <li>Local storage encryption for sensitive preferences</li>
+            <li>HTTPS encryption for all API communications (Volley secure requests)</li>
+            <li>Local storage encryption for sensitive preferences (Android Keystore)</li>
             <li>Regular security updates for dependencies</li>
             <li>Huawei's secure SDKs for all HMS integrations</li>
-            <li>WorkManager for secure background processing</li>
+            <li>WorkManager for secure background processing (Prayer notifications)</li>
+            <li>Foreground service for Azan playback (AzanService implementation)</li>
         </ul>
     </section>
 
@@ -271,6 +280,7 @@
             <li>United States (Start.io servers)</li>
             <li>China (Huawei servers)</li>
             <li>Singapore (Huawei cloud region)</li>
+            <li>United Kingdom (Aladhan API servers)</li>
         </ul>
         <p>These transfers are covered by the respective service providers' data protection agreements.</p>
     </section>
@@ -288,7 +298,7 @@
     <section>
         <h2>10. Contact Us</h2>
         <p>For questions about this policy or data practices:</p>
-        <p><strong>Email:</strong> mdnaeemm401@gmail.com</p>
+        <p><strong>Email:</strong> <a href="mailto:mdnaeemm401@gmail.com">mdnaeemm401@gmail.com</a></p>
         <p><strong>Developer:</strong> Naeem D. V.</p>
         <p>We typically respond within 3 business days.</p>
     </section>
@@ -304,6 +314,10 @@
         </ul>
         <div class="note">
             <strong>Note for EU Users:</strong> You may request deletion of cached data by uninstalling the app or contacting us directly.
+        </div>
+
+        <div class="note">
+            <strong>Huawei Specific:</strong> This app uses HMS Core (version 6.0+) services including Location Kit and Push Kit for enhanced functionality on Huawei devices.
         </div>
     </section>
 </body>
